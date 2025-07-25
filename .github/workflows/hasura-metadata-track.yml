@@ -13,6 +13,18 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      - name: test 1
+        run: |
+          if true; then
+            echo "No metadata changes to commit."
+          else
+            echo "succ
+          fi
+      
+      - name: test 2
+        if: true
+        run: echo ":succes 2"
+
 
       - name: Export Hasura metadata
         run: |
