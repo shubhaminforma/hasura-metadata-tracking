@@ -1,7 +1,7 @@
 name: Track Hasura Metadata
 
 on: push
-
+#resolved
 jobs:
   track-metadata:
     runs-on: self-hosted
