@@ -8,11 +8,13 @@ jobs:
     steps:
       - name: Clone repo manually
         run: |
+          echo "clonning repo..."
           git clone https://github.com/shubhaminforma/hasura-metadata-tracking.git
 
 
       - name: Export Hasura metadata
         run: |
+          cd hasura-project
           echo "Exporting Hasura metadata..."
           hasura metadata export
 
