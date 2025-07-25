@@ -28,7 +28,9 @@ jobs:
 
       - name: Export Hasura metadata
         run: |
+          ls
           cd hasura-project
+          ls
           echo "Exporting Hasura metadata..."
           hasura metadata export
 
