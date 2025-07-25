@@ -7,8 +7,10 @@ jobs:
     runs-on: self-hosted
     #resolved
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+      - name: Clone repo manually
+        run: |
+          git clone https://github.com/shubhaminforma/hasura-metadata-tracking.git
+
 
       - name: Export Hasura metadata
         run: |
