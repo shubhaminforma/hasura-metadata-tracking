@@ -6,10 +6,12 @@ jobs:
   track-metadata:
     runs-on: self-hosted
     steps:
-      - name: Clone repo manually
-        run: |
-          echo "clonning repo..."
-          git clone https://github.com/shubhaminforma/hasura-metadata-tracking.git
+      # - name: Clone repo manually
+      #   run: |
+      #     echo "clonning repo..."
+      #     git clone https://github.com/shubhaminforma/hasura-metadata-tracking.git
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
 
       - name: Export Hasura metadata
