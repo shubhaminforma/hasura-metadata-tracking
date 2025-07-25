@@ -13,36 +13,33 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      # - name: test 1
-      #   run: |
-      #     if true; then
-      #       echo "No metadata changes to commit."
-      #     else
-      #       echo "succ
-      #     fi
-      
       - name: test 2
         if: true
         run: echo ":succes 2"
 
-
       - name: Export Hasura metadata
         run: |
-          ls
           cd hasura-project
-          ls
           echo "Exporting Hasura metadata..."
           hasura metadata export
 
-      # - name: Commit and push metadata changes
-      #   run: |
-      #     git config user.name "github-actions[bot]"
-      #     git config user.email "github-actions[bot]@users.noreply.github.com"
+      - name: Commit and push metadata changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
 
-      #     git add metadata/
-      #     if (git diff --cached --quiet); then
-      #       echo "No metadata changes to commit."
-      #     else
-      #       git commit -m "Auto-export Hasura metadata on push"
-      #       git push origin HEAD
-      #     fi
+          git add metadata/
+          # if git diff --cached --quiet; then
+          #   echo "No metadata changes to commit."
+          # else
+          #   git commit -m "Auto-export Hasura metadata on push"
+          #   git push origin HEAD
+          # fi
+
+        if: git diff --cached --quiet
+        run: echo "No metadata changes to commit."
+
+        if: ![git diff --cached --quiet]
+        run: |
+          git commit -m "Auto-export Hasura metadata on push"
+          git push origin main
